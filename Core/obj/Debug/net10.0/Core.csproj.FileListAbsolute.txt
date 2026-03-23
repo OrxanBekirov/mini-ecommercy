@@ -1,0 +1,12 @@
+C:\Porjectc#\Mini-ECommercy\Core\bin\Debug\net10.0\Core.deps.json
+C:\Porjectc#\Mini-ECommercy\Core\bin\Debug\net10.0\Core.dll
+C:\Porjectc#\Mini-ECommercy\Core\bin\Debug\net10.0\Core.pdb
+C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\Core.csproj.AssemblyReference.cache
+C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\Core.AssemblyInfoInputs.cache
+C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\Core.AssemblyInfo.cs
+C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\Core.csproj.CoreCompileInputs.cache
+C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\Core.dll
+C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\refint\Core.dll
+C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\Core.pdb
+C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\ref\Core.dll
