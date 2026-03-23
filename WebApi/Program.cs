@@ -184,6 +184,17 @@ app.UseCors("AllowFrontend");
 
 app.UseAuthentication();
 app.UseAuthorization();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<CommercyDbContext>();
+
+    // 1. ƏVVƏLCƏ CƏDVƏLLƏRİ YARAT (BU ÇOX VACİBDİR!)
+    await context.Database.MigrateAsync();
+
+    // 2. SONRA ADMİN VƏ ROLLARI ƏLAVƏ ET
+    await SeedData.SeedRolesAndAdminAsync(services);
+}
 await SeedData.SeedRolesAndAdminAsync(app.Services);
 app.Use(async (context, next) =>
 {
