@@ -77,6 +77,7 @@ builder.Services.AddHttpContextAccessor();
 // Swagger (Authorize düyməsi ilə)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 //Stripe Setting
 var stripeSection = builder.Configuration.GetSection("StripeSettings");
 var stripeSettings = stripeSection.Get<StripeSetting>() ?? new StripeSetting { SecretKey = "sk_test_temp" };
@@ -171,11 +172,12 @@ builder.Services.AddCors(options =>
 // burda bitdi
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
     app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    app.UseSwaggerUI(options => {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+        options.RoutePrefix = string.Empty; // Bu satır sayesinde direk linke (sonuna /swagger yazmadan) girdiğinde açılır
+    });
+
 
 app.UseHttpsRedirection();
 app.UseCors("AllowFrontend");
@@ -193,7 +195,6 @@ using (var scope = app.Services.CreateScope())
     // 2. SONRA ADMİN VƏ ROLLARI ƏLAVƏ ET
     await SeedData.SeedRolesAndAdminAsync(services);
 }
-await SeedData.SeedRolesAndAdminAsync(app.Services);
 app.Use(async (context, next) =>
 {
     // Bütün webhook müraciətləri üçün buffering-i açırıq
