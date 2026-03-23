@@ -176,4 +176,6 @@ C:\Porjectc#\Mini-ECommercy\WebApi\obj\Debug\net10.0\WebApi.pdb
 C:\Porjectc#\Mini-ECommercy\WebApi\obj\Debug\net10.0\WebApi.genruntimeconfig.cache
 C:\Porjectc#\Mini-ECommercy\WebApi\obj\Debug\net10.0\ref\WebApi.dll
 C:\Porjectc#\Mini-ECommercy\WebApi\bin\Debug\net10.0\Stripe.net.dll
-C:\Porjectc#\Mini-ECommercy\WebApi\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Porjectc#\Mini-ECommercy\WebApi\bin\Debug\net10.0\Npgsql.dll
+C:\Porjectc#\Mini-ECommercy\WebApi\bin\Debug\net10.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Porjectc#\Mini-ECommercy\WebApi\obj\Debug\net10.0\WebApi.sourcelink.json

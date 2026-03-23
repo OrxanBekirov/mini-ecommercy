@@ -17,3 +17,4 @@ C:\Porjectc#\Mini-ECommercy\DAL\obj\Debug\net10.0\refint\DAL.dll
 C:\Porjectc#\Mini-ECommercy\DAL\obj\Debug\net10.0\DAL.pdb
 C:\Porjectc#\Mini-ECommercy\DAL\obj\Debug\net10.0\DAL.genruntimeconfig.cache
 C:\Porjectc#\Mini-ECommercy\DAL\obj\Debug\net10.0\ref\DAL.dll
+C:\Porjectc#\Mini-ECommercy\DAL\obj\Debug\net10.0\DAL.sourcelink.json

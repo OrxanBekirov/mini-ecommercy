@@ -43,7 +43,7 @@ builder.Services.AddSingleton(tokenOption);
 
 // DbContext
 builder.Services.AddDbContext<CommercyDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 //EmailConfiguration
 builder.Services.Configure<EmailSettings>(
     builder.Configuration.GetSection("EmailSettings"));

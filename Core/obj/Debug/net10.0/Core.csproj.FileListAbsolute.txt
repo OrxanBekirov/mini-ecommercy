@@ -10,3 +10,6 @@ C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\Core.dll
 C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\refint\Core.dll
 C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\Core.pdb
 C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\ref\Core.dll
+C:\Porjectc#\Mini-ECommercy\Core\bin\Debug\net10.0\Core.runtimeconfig.json
+C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\Core.sourcelink.json
+C:\Porjectc#\Mini-ECommercy\Core\obj\Debug\net10.0\Core.genruntimeconfig.cache

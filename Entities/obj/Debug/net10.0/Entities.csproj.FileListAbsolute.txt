@@ -13,3 +13,6 @@ C:\Porjectc#\Mini-ECommercy\Entities\obj\Debug\net10.0\Entities.dll
 C:\Porjectc#\Mini-ECommercy\Entities\obj\Debug\net10.0\refint\Entities.dll
 C:\Porjectc#\Mini-ECommercy\Entities\obj\Debug\net10.0\Entities.pdb
 C:\Porjectc#\Mini-ECommercy\Entities\obj\Debug\net10.0\ref\Entities.dll
+C:\Porjectc#\Mini-ECommercy\Entities\bin\Debug\net10.0\Entities.runtimeconfig.json
+C:\Porjectc#\Mini-ECommercy\Entities\obj\Debug\net10.0\Entities.sourcelink.json
+C:\Porjectc#\Mini-ECommercy\Entities\obj\Debug\net10.0\Entities.genruntimeconfig.cache

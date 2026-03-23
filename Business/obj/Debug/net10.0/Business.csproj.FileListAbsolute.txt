@@ -17,3 +17,6 @@ C:\Porjectc#\Mini-ECommercy\Business\obj\Debug\net10.0\Business.dll
 C:\Porjectc#\Mini-ECommercy\Business\obj\Debug\net10.0\refint\Business.dll
 C:\Porjectc#\Mini-ECommercy\Business\obj\Debug\net10.0\Business.pdb
 C:\Porjectc#\Mini-ECommercy\Business\obj\Debug\net10.0\ref\Business.dll
+C:\Porjectc#\Mini-ECommercy\Business\bin\Debug\net10.0\Business.runtimeconfig.json
+C:\Porjectc#\Mini-ECommercy\Business\obj\Debug\net10.0\Business.sourcelink.json
+C:\Porjectc#\Mini-ECommercy\Business\obj\Debug\net10.0\Business.genruntimeconfig.cache
