@@ -39,8 +39,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-03-23T11:17:01.69Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -56,8 +55,7 @@
               "RelativeToolTip": ".dockerignore",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-03-23T11:36:25.163Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T11:36:25.163Z"
             },
             {
               "$type": "Document",
@@ -82,8 +80,7 @@
               "RelativeToolTip": "WebApi\\Program.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T10:52:41.592Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T10:52:41.592Z"
             }
           ]
         }
