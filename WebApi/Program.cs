@@ -9,7 +9,7 @@ using Business.Validators.Payment;
 using Business.Validators.Product;
 using CloudinaryDotNet;
 using DAL;
-using DAL.Migrations;
+
 using DAL.Repositories.Abstract;
 using DAL.Repositories.Concrete;
 using DAL.UnitOfWork.Abstract;
@@ -36,8 +36,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // 1. Öncə TokenOption-u appsettings-dən oxuyuruq
 var tokenOption = builder.Configuration.GetSection("TokenOption").Get<TokenOption>()
-    ?? throw new Exception("TokenOption bölməsi appsettings.json-da tapılmadı!");
-
+    ?? new TokenOption { SecurityKey = "temporary_key_for_build_32_chars_min", Issuer = "test", Audience = "test" };
 // 2. Oxuduğumuz bu obyekti DI konteynerinə Singleton olaraq əlavə edirik (BU ÇOX VACİBDİR)
 builder.Services.AddSingleton(tokenOption);
 
@@ -80,10 +79,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Stripe Setting
 var stripeSection = builder.Configuration.GetSection("StripeSettings");
-
+var stripeSettings = stripeSection.Get<StripeSetting>() ?? new StripeSetting { SecretKey = "sk_test_temp" };
+StripeConfiguration.ApiKey = stripeSettings.SecretKey;
 builder.Services.Configure<StripeSetting>(stripeSection);
-
-var stripeSettings = stripeSection.Get<StripeSetting>();
 
 if (stripeSettings == null || string.IsNullOrWhiteSpace(stripeSettings.SecretKey))
 {
@@ -205,5 +203,7 @@ app.Use(async (context, next) =>
     }
     await next();
 });
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Urls.Add($"http://*:{port}");
 app.MapControllers();
 app.Run();

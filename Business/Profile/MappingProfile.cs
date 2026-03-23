@@ -9,7 +9,7 @@ using Business.Dtos.OrderItem;
 using Business.Dtos.Payment;
 using Business.Dtos.Product;
 using Business.Dtos.Wishlist;
-using DAL.Migrations;
+
 using Entities.Concrete;
 
 public class MappingProfiles : Profile
