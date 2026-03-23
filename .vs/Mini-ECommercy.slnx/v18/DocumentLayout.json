@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Porjectc#\\Mini-ECommercy\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{12357D34-2A02-1ECD-BC6C-D84ADDC1A72E}|DAL\\DAL.csproj|c:\\porjectc#\\mini-ecommercy\\dal\\commercydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12357D34-2A02-1ECD-BC6C-D84ADDC1A72E}|DAL\\DAL.csproj|solutionrelative:dal\\commercydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebApi\\WebApi.csproj|c:\\porjectc#\\mini-ecommercy\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8D6B33C5-CEE1-20B5-A207-99CBB61F699C}|WebApi\\WebApi.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -26,11 +30,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Porjectc#\\Mini-ECommercy\\WebApi\\appsettings.json",
               "RelativeDocumentMoniker": "WebApi\\appsettings.json",
@@ -39,7 +43,19 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-03-23T11:17:01.69Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CommercyDbContext.cs",
+              "DocumentMoniker": "C:\\Porjectc#\\Mini-ECommercy\\DAL\\CommercyDbContext.cs",
+              "RelativeDocumentMoniker": "DAL\\CommercyDbContext.cs",
+              "ToolTip": "C:\\Porjectc#\\Mini-ECommercy\\DAL\\CommercyDbContext.cs",
+              "RelativeToolTip": "DAL\\CommercyDbContext.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAADwvx4AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T16:12:59.38Z",
               "EditorCaption": ""
             },
             {
@@ -48,7 +64,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": ".dockerignore",
               "DocumentMoniker": "C:\\Porjectc#\\Mini-ECommercy\\.dockerignore",
               "RelativeDocumentMoniker": ".dockerignore",
@@ -60,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\Porjectc#\\Mini-ECommercy\\Dockerfile",
               "RelativeDocumentMoniker": "Dockerfile",
@@ -72,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Porjectc#\\Mini-ECommercy\\WebApi\\Program.cs",
               "RelativeDocumentMoniker": "WebApi\\Program.cs",
