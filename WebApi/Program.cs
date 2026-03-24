@@ -160,14 +160,10 @@ var allowedOrigins = builder.Configuration
     .Get<string[]>() ?? Array.Empty<string>();
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", policy =>
-    {
-        policy
-            .WithOrigins(allowedOrigins)
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
-    });
+    options.AddPolicy("VercelPolicy",
+        policy => policy.WithOrigins("https://mini-ecommercy-front.vercel.app") // Sizin link
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
 });
 // burda bitdi
 var app = builder.Build();
