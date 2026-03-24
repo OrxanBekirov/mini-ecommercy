@@ -157,13 +157,14 @@ builder.Services.AddAuthorization();
 // AddCors edirem 
 var allowedOrigins = builder.Configuration
     .GetSection("Cors:AllowedOrigins")
-    .Get<string[]>() ?? Array.Empty<string>();
+    .Get<string[]>() ?? new string[] { "https://mini-ecommercy-front.vercel.app" };
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("VercelPolicy",
-        policy => policy.WithOrigins("https://mini-ecommercy-front.vercel.app") // Sizin link
+    options.AddPolicy("MyCorsPolicy", // Siyasətə vahid bir ad veririk
+        policy => policy.WithOrigins(allowedOrigins)
                         .AllowAnyMethod()
-                        .AllowAnyHeader());
+                        .AllowAnyHeader()
+                        .AllowCredentials()); // Auth (Token/Cookie) üçün vacibdir
 });
 // burda bitdi
 var app = builder.Build();
