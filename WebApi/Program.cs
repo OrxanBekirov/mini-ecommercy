@@ -158,13 +158,14 @@ builder.Services.AddAuthorization();
 var allowedOrigins = builder.Configuration
     .GetSection("Cors:AllowedOrigins")
     .Get<string[]>() ?? new string[] { "https://mini-ecommercy-front.vercel.app" };
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("MyCorsPolicy", // Siyasətə vahid bir ad veririk
+    options.AddPolicy("MyCorsPolicy", // Siyasətə "MyCorsPolicy" adını verdik
         policy => policy.WithOrigins(allowedOrigins)
                         .AllowAnyMethod()
                         .AllowAnyHeader()
-                        .AllowCredentials()); // Auth (Token/Cookie) üçün vacibdir
+                        .AllowCredentials());
 });
 // burda bitdi
 var app = builder.Build();
@@ -175,12 +176,13 @@ var app = builder.Build();
         options.RoutePrefix = string.Empty; // Bu satır sayesinde direk linke (sonuna /swagger yazmadan) girdiğinde açılır
     });
 
+app.UseCors("MyCorsPolicy");
 
 app.UseHttpsRedirection();
-app.UseCors("AllowFrontend");
 
 app.UseAuthentication();
 app.UseAuthorization();
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
