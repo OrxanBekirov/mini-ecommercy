@@ -19,14 +19,13 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi;// Bu çox vacibdir
+using Microsoft.OpenApi;
 using Stripe;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using System.Reflection; 
+using System.Reflection;
 using System.Text;
 using WebApi;
 using WebApi.Configuration;
@@ -34,16 +33,16 @@ using WebApi.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Öncə TokenOption-u appsettings-dən oxuyuruq
+// 1. TokenOption
 var tokenOption = builder.Configuration.GetSection("TokenOption").Get<TokenOption>()
     ?? new TokenOption { SecurityKey = "temporary_key_for_build_32_chars_min", Issuer = "test", Audience = "test" };
-// 2. Oxuduğumuz bu obyekti DI konteynerinə Singleton olaraq əlavə edirik (BU ÇOX VACİBDİR)
 builder.Services.AddSingleton(tokenOption);
 
-// DbContext
+// DbContext (PostgreSQL)
 builder.Services.AddDbContext<CommercyDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-//EmailConfiguration
+
+// EmailSettings
 builder.Services.Configure<EmailSettings>(
     builder.Configuration.GetSection("EmailSettings"));
 
@@ -60,65 +59,48 @@ builder.Services.AddScoped<IPaymentService, PaymentManager>();
 builder.Services.AddScoped<IMediaService, MediaManager>();
 builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<IWishlistService, WishlistManager>();
-
 builder.Services.AddScoped<IEmailService, EmailManager>();
+
 builder.Services.AddAutoMapper(cfg =>
 {
     cfg.AddMaps(typeof(ProductManager).Assembly);
 });
+
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
-    // Enum-ların rəqəm (0,1) yox, söz (Pending, Paid) kimi görünməsi üçün
     options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
 });
-// sistemin oz icinde cekir Usere olan melumati=tlari
+
 builder.Services.AddHttpContextAccessor();
 
-// Swagger (Authorize düyməsi ilə)
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Stripe Setting
+// Stripe
 var stripeSection = builder.Configuration.GetSection("StripeSettings");
 var stripeSettings = stripeSection.Get<StripeSetting>() ?? new StripeSetting { SecretKey = "sk_test_temp" };
 StripeConfiguration.ApiKey = stripeSettings.SecretKey;
 builder.Services.Configure<StripeSetting>(stripeSection);
 
-if (stripeSettings == null || string.IsNullOrWhiteSpace(stripeSettings.SecretKey))
-{
-    throw new Exception("Stripe konfiqurasiyası tapılmadı! appsettings.json-u yoxlayın.");
-}
-
-StripeConfiguration.ApiKey = stripeSettings.SecretKey;
-//Cloudinary Configuration
+// Cloudinary
 builder.Services.Configure<CloudinarySettings>(
     builder.Configuration.GetSection("CloudinarySettings"));
 builder.Services.AddSingleton(sp =>
 {
     var settings = sp.GetRequiredService<IOptions<CloudinarySettings>>().Value;
-
-    // 'Account' yerinə tam adını yazırıq:
     var account = new CloudinaryDotNet.Account(
         settings.CloudName,
         settings.ApiKey,
         settings.ApiSecret
     );
-
     return new Cloudinary(account);
 });
-
-
 
 // FluentValidation
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<OrderCreateDtoValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<ContactSendDtoValidator>();
-//builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
-
-
-
-
 
 // Identity
 builder.Services
@@ -154,28 +136,32 @@ builder.Services.AddAuthentication(opt =>
 });
 
 builder.Services.AddAuthorization();
-// AddCors edirem 
+
+// ✅ CORS (Düzgün)
 var allowedOrigins = builder.Configuration
     .GetSection("Cors:AllowedOrigins")
     .Get<string[]>() ?? new string[] { "https://mini-ecommercy-front.vercel.app" };
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("MyCorsPolicy", // Siyasətə "MyCorsPolicy" adını verdik
+    options.AddPolicy("MyCorsPolicy",
         policy => policy.WithOrigins(allowedOrigins)
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials());
 });
-// burda bitdi
+
 var app = builder.Build();
 
-    app.UseSwagger();
-    app.UseSwaggerUI(options => {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-        options.RoutePrefix = string.Empty; // Bu satır sayesinde direk linke (sonuna /swagger yazmadan) girdiğinde açılır
-    });
+// Swagger
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    options.RoutePrefix = string.Empty;
+});
 
+// ✅ CORS çağırışı həmişə authentication-dan əvvəl
 app.UseCors("MyCorsPolicy");
 
 app.UseHttpsRedirection();
@@ -183,27 +169,28 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Migration və seed data
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<CommercyDbContext>();
 
-    // 1. ƏVVƏLCƏ CƏDVƏLLƏRİ YARAT (BU ÇOX VACİBDİR!)
     await context.Database.MigrateAsync();
-
-    // 2. SONRA ADMİN VƏ ROLLARI ƏLAVƏ ET
     await SeedData.SeedRolesAndAdminAsync(services);
 }
+
+// Webhook buffering
 app.Use(async (context, next) =>
 {
-    // Bütün webhook müraciətləri üçün buffering-i açırıq
     if (context.Request.Path.Value.Contains("webhook"))
     {
         context.Request.EnableBuffering();
     }
     await next();
 });
+
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 app.Urls.Add($"http://*:{port}");
+
 app.MapControllers();
 app.Run();
