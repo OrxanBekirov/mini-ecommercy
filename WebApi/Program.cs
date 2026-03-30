@@ -145,13 +145,14 @@ var allowedOrigins = builder.Configuration
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyCorsPolicy",
-        policy => policy.WithOrigins(allowedOrigins)
+        policy => policy.SetIsOriginAllowed(origin => true)
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials());
 });
 
 var app = builder.Build();
+app.UseCors("MyCorsPolicy");
 
 // Swagger
 app.UseSwagger();
@@ -162,7 +163,6 @@ app.UseSwaggerUI(options =>
 });
 
 // ✅ CORS çağırışı həmişə authentication-dan əvvəl
-app.UseCors("MyCorsPolicy");
 
 app.UseHttpsRedirection();
 
