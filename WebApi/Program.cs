@@ -144,16 +144,19 @@ var allowedOrigins = builder.Configuration
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("MyCorsPolicy",
-        policy => policy.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        );
+    options.AddPolicy("MyCorsPolicy", policy =>
+    {
+        policy.WithOrigins(allowedOrigins)
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials();
+    });
 });
 
 var app = builder.Build();
 
 // 1. MÜTLƏQ BU SIRALAMA OLMALIDIR:
+app.UseRouting();
 app.UseCors("MyCorsPolicy");
 
 app.UseSwagger();
@@ -187,7 +190,7 @@ using (var scope = app.Services.CreateScope())
 // Webhook buffering
 app.Use(async (context, next) =>
 {
-    if (context.Request.Path.Value.Contains("webhook"))
+    if (context.Request.Path.Value.Contains("webhook")==true)
     {
         context.Request.EnableBuffering();
     }
