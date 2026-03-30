@@ -32,9 +32,7 @@ namespace WebApi.Controllers
             return result.Success ? Ok(result) : NotFound(result);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddAsync([FromBody] BrandCreateDto dto)
-        {
+       
             [HttpPost]
             public async Task<IActionResult> AddAsync([FromBody] BrandCreateDto dto)
             {
@@ -56,7 +54,7 @@ namespace WebApi.Controllers
                 }
             }
 
-        }
+        
 
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] BrandUpdateDto dto)

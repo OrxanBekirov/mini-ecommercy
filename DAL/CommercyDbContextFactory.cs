@@ -9,11 +9,21 @@ namespace DAL
     {
         public CommercyDbContext CreateDbContext(string[] args)
         {
+            // 1. appsettings.json faylını oxumaq üçün konfiqurasiya qurulur
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory()) // Adətən WebApi qovluğunu göstərməlidir
+                .AddJsonFile("appsettings.json", optional: true)
+                .AddJsonFile("appsettings.Development.json", optional: true)
+                .Build();
+
             var optionsBuilder = new DbContextOptionsBuilder<CommercyDbContext>();
 
-            // Bu hissə sadəcə miqrasiya yaransın deyə müvəqqəti bir "yol" göstərir.
-            // Real bazaya qoşulmaq üçün hələ də Program.cs istifadə olunacaq.
-            optionsBuilder.UseNpgsql("Host=localhost;Database=dummy;Username=postgres;Password=password");
+            // 2. Connection string-i fayldan oxuyuruq
+            // Əgər tapmasa, birbaşa Railway string-ini bura yapışdıra da bilərsiniz (müvəqqəti test üçün)
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
+                                   
+
+            optionsBuilder.UseNpgsql(connectionString);
 
             return new CommercyDbContext(optionsBuilder.Options);
         }
