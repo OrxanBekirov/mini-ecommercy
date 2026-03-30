@@ -8,7 +8,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors("MyCorsPolicy")]
+   
     public class BrandsController : ControllerBase
     {
         private readonly IBrandService _brandService;
@@ -35,8 +35,19 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] BrandCreateDto dto)
         {
-            var result = await _brandService.AddAsync(dto);
-            return result.Success ? Ok(result) : BadRequest(result);
+            try
+            {
+                if (dto == null)
+                    return BadRequest("DTO null gəldi");
+
+                var result = await _brandService.AddAsync(dto);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString()); // 🔥 REAL ERROR
+            }
+           
         }
 
         [HttpPut("{id:int}")]
