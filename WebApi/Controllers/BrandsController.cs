@@ -35,19 +35,27 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] BrandCreateDto dto)
         {
-            try
+            [HttpPost]
+            public async Task<IActionResult> AddAsync([FromBody] BrandCreateDto dto)
             {
-                if (dto == null)
-                    return BadRequest("DTO null gəldi");
+                try
+                {
+                    if (dto == null)
+                        return BadRequest("DTO null gəldi");
 
-                var result = await _brandService.AddAsync(dto);
-                return Ok(result);
+                    var result = await _brandService.AddAsync(dto);
+
+                    if (!result.Success)
+                        return BadRequest(result); // real validation error-ları görmək üçün
+
+                    return Ok(result);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(new { error = ex.Message, stack = ex.StackTrace });
+                }
             }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.ToString()); // 🔥 REAL ERROR
-            }
-           
+
         }
 
         [HttpPut("{id:int}")]
