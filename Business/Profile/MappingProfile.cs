@@ -27,7 +27,9 @@ public class MappingProfiles : Profile
         CreateMap<CategoryUpdateDto, Category>();
 
         // Product
-        CreateMap<ProductCreateDto, Product>();
+        CreateMap<ProductCreateDto, Product>()
+      .ForMember(dest => dest.RowVersion, opt => opt.Ignore()) // RowVersion-u keç
+      .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(src => false)); // IsDeleted default false
         CreateMap<ProductUpdateDto, Product>();
 
         // TƏK VƏ TAM PRODUCT MAPPING

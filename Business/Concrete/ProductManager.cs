@@ -118,8 +118,11 @@ public class ProductManager : IProductService
             .IsExistAsync(p => p.Name == dto.Name && p.BrandId == dto.BrandId);
 
         if (exists) return new ErrorResult("Bu adda product artıq var");
+        var product = _mapper.Map<Product>(dto);
+        product.RowVersion = null; // Və ya bazada avtomatik yaranması üçün boş buraxın
+        product.IsDeleted = false; // Mütləq false set et
+        await _unitOfWork.ProductRepository.AddAsync(product);
 
-        await _unitOfWork.ProductRepository.AddAsync(_mapper.Map<Product>(dto));
         var saved = await _unitOfWork.SaveChangesAsync();
 
         return saved > 0
