@@ -137,19 +137,19 @@ builder.Services.AddAuthentication(opt =>
 
 builder.Services.AddAuthorization();
 
-// ✅ CORS (Düzgün)
-var allowedOrigins = builder.Configuration
-    .GetSection("Cors:AllowedOrigins")
-    .Get<string[]>() ?? new string[] { "https://mini-ecommercy-front.vercel.app" };
+var allowedOrigins = new[]
+{
+    "https://mini-ecommercy-front.vercel.app"
+};
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyCorsPolicy", policy =>
     {
         policy.WithOrigins(allowedOrigins)
-              .AllowAnyMethod()
               .AllowAnyHeader()
-              .AllowCredentials();
+              .AllowAnyMethod()
+              ;// əgər token/cookie varsa
     });
 });
 
