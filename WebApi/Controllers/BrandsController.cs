@@ -1,13 +1,14 @@
 ﻿using Business.Abstract;
 using Business.Dtos.Brand;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+    [EnableCors("MyCorsPolicy")]
     public class BrandsController : ControllerBase
     {
         private readonly IBrandService _brandService;

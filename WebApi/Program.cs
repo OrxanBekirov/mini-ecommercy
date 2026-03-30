@@ -145,16 +145,17 @@ var allowedOrigins = builder.Configuration
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyCorsPolicy",
-        policy => policy.SetIsOriginAllowed(origin => true)
+        policy => policy.AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader()
-                        .AllowCredentials());
+                        );
 });
 
 var app = builder.Build();
+
+// 1. MÜTLƏQ BU SIRALAMA OLMALIDIR:
 app.UseCors("MyCorsPolicy");
 
-// Swagger
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
@@ -162,12 +163,16 @@ app.UseSwaggerUI(options =>
     options.RoutePrefix = string.Empty;
 });
 
-// ✅ CORS çağırışı həmişə authentication-dan əvvəl
-
 app.UseHttpsRedirection();
 
+// Auth hər zaman CORS-dan sonra gəlir
 app.UseAuthentication();
 app.UseAuthorization();
+
+
+// ✅ CORS çağırışı həmişə authentication-dan əvvəl
+
+
 
 // Migration və seed data
 using (var scope = app.Services.CreateScope())
