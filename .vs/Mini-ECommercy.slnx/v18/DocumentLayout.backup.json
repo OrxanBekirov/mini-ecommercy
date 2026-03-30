@@ -60,7 +60,7 @@
               "RelativeDocumentMoniker": "WebApi\\appsettings.json",
               "ToolTip": "C:\\Porjectc#\\Mini-ECommercy\\WebApi\\appsettings.json",
               "RelativeToolTip": "WebApi\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-03-23T11:17:01.69Z",
               "IsPinned": true,
@@ -80,8 +80,7 @@
               "RelativeToolTip": "WebApi\\Controllers\\BrandsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T09:10:51.514Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-30T09:10:51.514Z"
             },
             {
               "$type": "Document",
@@ -115,7 +114,7 @@
               "RelativeDocumentMoniker": "WebApi\\Program.cs",
               "ToolTip": "C:\\Porjectc#\\Mini-ECommercy\\WebApi\\Program.cs",
               "RelativeToolTip": "WebApi\\Program.cs",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAQwK8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAQwLgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-23T10:52:41.592Z",
               "EditorCaption": ""
