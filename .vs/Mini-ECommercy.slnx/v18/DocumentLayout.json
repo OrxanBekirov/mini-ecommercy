@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Porjectc#\\Mini-ECommercy\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|c:\\porjectc#\\mini-ecommercy\\entities\\concrete\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95DE3BD9-A587-35A9-17E0-3C34D2A57441}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|c:\\porjectc#\\mini-ecommercy\\business\\concrete\\productmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5827C10-32D2-D72F-4639-49B48E591E74}|Business\\Business.csproj|solutionrelative:business\\concrete\\productmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,6 +31,23 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Porjectc#\\Mini-ECommercy\\Entities\\Concrete\\Product.cs",
+              "RelativeDocumentMoniker": "Entities\\Concrete\\Product.cs",
+              "ToolTip": "C:\\Porjectc#\\Mini-ECommercy\\Entities\\Concrete\\Product.cs",
+              "RelativeToolTip": "Entities\\Concrete\\Product.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAIwA8AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T07:56:58.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ProductManager.cs",
               "DocumentMoniker": "C:\\Porjectc#\\Mini-ECommercy\\Business\\Concrete\\ProductManager.cs",
               "RelativeDocumentMoniker": "Business\\Concrete\\ProductManager.cs",
@@ -39,7 +60,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Porjectc#\\Mini-ECommercy\\Business\\Profile\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Business\\Profile\\MappingProfile.cs",
@@ -47,12 +68,11 @@
               "RelativeToolTip": "Business\\Profile\\MappingProfile.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAqwBgAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T19:53:32.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-30T19:53:32.062Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ProductCreateDto.cs",
               "DocumentMoniker": "C:\\Porjectc#\\Mini-ECommercy\\Business\\Dtos\\Product\\ProductCreateDto.cs",
               "RelativeDocumentMoniker": "Business\\Dtos\\Product\\ProductCreateDto.cs",
@@ -60,12 +80,17 @@
               "RelativeToolTip": "Business\\Dtos\\Product\\ProductCreateDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T19:39:35.442Z",
-              "EditorCaption": ""
-            },
+              "WhenOpened": "2026-03-30T19:39:35.442Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 377,
+          "SelectedChildIndex": -1,
+          "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+              "Name": "ST:156:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             }
           ]
         }

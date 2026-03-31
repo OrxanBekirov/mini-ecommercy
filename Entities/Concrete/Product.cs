@@ -15,7 +15,7 @@ namespace Entities.Concrete
         public Brand Brand { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public byte[] RowVersion { get; set; }
+        public byte[]? RowVersion { get; set; }
         public List<ProductImage> ProductImages { get; set; }
         public bool IsDeleted { get; set; }
         public ICollection<Wishlist> Wishlists { get; set; }
